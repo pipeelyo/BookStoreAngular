@@ -1,0 +1,40 @@
+@if (loading) {
+<app-progress-bar />
+}@else {
+<div class="container">
+    <div class="title">
+        <h4>Listado de Libros</h4>
+        <a type="button" class="btn btn-info" [routerLink]="['/formlibro/0']">Agregar Libro</a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(ListBook){
+            @for (book of ListBook;track book.bookId){
+            <tr class="table-light">
+                <th scope="row">{{book?.title}}</th>
+                <td>{{book.description}}</td>
+                <td>{{book.authorId}}</td>
+                <td>{{book.publisher}}</td>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm"
+                        [routerLink]="['/formlibro/', book.bookId]">Editar</button>
+                    <button (click)="deleteProduct(book?.bookId!)" type="button" class="btn btn-danger btn-sm ms-2">Eliminar</button>
+                </td>
+            </tr>
+            }
+            }@else {
+                <h1> no hay libros almacenados</h1>
+            }
+        </tbody>
+    </table>
+</div>
+}

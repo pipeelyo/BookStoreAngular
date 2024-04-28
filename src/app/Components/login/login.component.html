@@ -1,0 +1,29 @@
+<div class="row mt-5">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card bg-light mb-3" style="max-width: 40rem;">
+            <div class="card-header text-center">Agregar Producto</div>
+            <div class="card-body">
+                <form [formGroup]="formLogin" (ngSubmit)="login()">
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label mt-4">Usuario</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Ingrese titulo del libro">
+                        @if (formLogin.get('email')?.touched && formLogin.get('email')?.hasError('required')) {
+                            <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label mt-4">Constrasena</label>
+                        <input type="password" class="form-control" formControlName="password" placeholder="Ingrese titulo del libro">
+                        @if (formLogin.get('password')?.touched && formLogin.get('password')?.hasError('required')) {
+                            <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div class="row mt-3 text-center">
+                            <button [disabled]="formLogin.invalid" type="submit" class="btn btn-primary">Aceptar</button>                        
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

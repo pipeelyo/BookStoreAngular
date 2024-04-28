@@ -1,0 +1,49 @@
+@if (loading) {
+    <app-progress-bar />
+}
+@else {
+<div class="row mt-5">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card border-light mb-3" style="max-width: 40rem;">
+            <div class="card-header text-center">Crear usuario</div>
+            <div class="card-body">
+                <form [formGroup]="formUser" (ngSubmit)="addUser()">
+                    <div>
+                        <input type="email" class="form-control" formControlName="Email" placeholder="Ingrese el Email">
+                        @if (formUser.get('Email')?.touched && formUser.get('Email')?.hasError('required')) {
+                            <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div>
+                        <input type="input" class="form-control" formControlName="FirstName" placeholder="Ingrese su nombre">
+                        @if (formUser.get('FirstName')?.touched && formUser.get('FirstName')?.hasError('required')) {
+                            <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div>
+                        <input type="input" class="form-control" formControlName="LastName" placeholder="Ingrese su Apellido">
+                        @if (formUser.get('LastName')?.touched && formUser.get('LastName')?.hasError('required')) {
+                            <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" formControlName="Password" placeholder="Ingrese la Constasena">
+                        @if (formUser.get('Password')?.touched && formUser.get('Password')?.hasError('required')) {
+                            <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div> 
+                    <div class="row mt-3 text-center">
+                        <div class="col-lg-6">
+                            <button [disabled]="formUser.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col-lg-2">
+                            <button [routerLink]="['/']" class="btn btn-primary">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+}

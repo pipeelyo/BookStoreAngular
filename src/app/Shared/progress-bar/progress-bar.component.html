@@ -1,0 +1,15 @@
+<div class="progress mt-5">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70"
+        aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+</div>
+
+@if (isLoggin) {
+    <div class="alert alert-dismissible alert-warning mt-5 text-center">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Usuario no encontrado!</h4>
+        <p class="mb-0">si no tienes un usuario lo puedes crear en<br>
+            <button [routerLink]="['/formuser']" type="button" class="btn btn-outline-success m-3">Usuario</button>
+            <button [routerLink]="['/login']" type="button" class="btn btn-outline-info  m-3">login</button>
+        </p>
+    </div>
+}

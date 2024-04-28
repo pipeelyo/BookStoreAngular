@@ -1,0 +1,64 @@
+@if (loading) {
+    <app-progress-bar />
+}
+@else {
+    <div class="row mt-5">
+        <div class="col-lg-4 offset-lg-4">
+            <div class="card border-light mb-3" style="max-width: 40rem;">
+                <div class="card-header text-center">{{metodo}} Libro</div>
+                <div class="card-body">
+                    <form [formGroup]="formBook" (ngSubmit)="this.id === 0? addProduct() :  editBook()">
+                        <div>
+                            <label for="exampleInputEmail1" class="form-label mt-4">Titulo</label>
+                            <input type="input" class="form-control" formControlName="Title" placeholder="Ingrese titulo del libro">
+                            @if (formBook.get('Title')?.touched && formBook.get('Title')?.hasError('required')) {
+                                <span class="text-danger">El campo es <strong>requerido</strong></span>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <label for="exampleInputEmail1" class="form-label mt-4">Descripcion</label>
+                                <textarea class="form-control" formControlName="Description" rows="3"></textarea>
+                            </div>
+                            @if (formBook.get('Description')?.touched && formBook.get('Description')?.hasError('required')) {
+                                <span class="text-danger">El campo es <strong>requerido</strong></span>
+                            }
+                        </div>
+                        <div>
+                            <label for="AuthorId" class="form-label mt-4">Autor</label>
+                            <select class="form-select" formControlName="AuthorId">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                            @if (formBook.get('AuthorId')?.touched && formBook.get('AuthorId')?.hasError('required')) {
+                                <span class="text-danger">El campo es <strong>requerido</strong> </span>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <label for="exampleInputEmail1" class="form-label mt-4">Editorial</label>
+                                <input type="input" class="form-control" formControlName="Publisher"
+                                    placeholder="Ingrese titulo del libro">
+                            </div>
+                            @if (formBook.get('Publisher')?.touched && formBook.get('Publisher')?.hasError('required')) {
+                                <span class="text-danger">El campo es <strong>requerido</strong></span>
+                            }
+                        </div>
+                        <div class="row mt-2 text-center">
+                            <div class="col-lg-6">
+                                <button [disabled]="formBook.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+                            </div>
+                            <div class="col-lg-2">
+                                <button [routerLink]="['/book']" class="btn btn-primary">Volver</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+}

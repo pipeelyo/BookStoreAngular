@@ -1,0 +1,44 @@
+@if (loading) {
+<app-progress-bar />
+}@else {
+<div class="row mt-5">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card border-light mb-3" style="max-width: 40rem;">
+            <div class="card-header text-center">{{metodo}} Producto</div>
+            <div class="card-body">
+                <form [formGroup]="formAuthor" (ngSubmit)="this.id === 0 ? addAuthor(): editAuthor()">
+                    <div>
+                        <label for="exampleInputEmail1" class="form-label mt-4">Nombre Autor</label>
+                        <input type="input" class="form-control" formControlName="AuthorName"
+                            placeholder="Ingrese Nombre del Autor">
+                        @if (formAuthor.get('AuthorName')?.touched &&
+                        formAuthor.get('AuthorName')?.hasError('required')) {
+                        <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <label for="exampleInputEmail1" class="form-label mt-4">Biografia</label>
+                            <textarea class="form-control" formControlName="Biography" rows="3"></textarea>
+                        </div>
+                        @if (formAuthor.get('Biography')?.touched && formAuthor.get('Biography')?.hasError('required'))
+                        {
+                        <span class="text-danger">El campo es <strong>requerido</strong></span>
+                        }
+                    </div>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button [disabled]="formAuthor.invalid" type="submit"
+                                class="btn btn-primary">Aceptar</button>
+                        </div>
+                        <div class="col-lg-2">
+                            <button [routerLink]="['/author']" class="btn btn-primary">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+}
